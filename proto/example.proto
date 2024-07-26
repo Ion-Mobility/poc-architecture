@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package grpcs;
+
+option go_package = ".;grpcs";
+
+message Secure {
+    string userId = 1;
+    string email = 2;
+    string requestId =3;
+}
+
+message Unsecure {
+}
+
+message Response {
+    string message = 1;
+}
+
+service Hello {
+    rpc SayHello(Unsecure) returns (Response) {}
+    rpc SayHelloSecure(Secure) returns (Response) {}
+}
